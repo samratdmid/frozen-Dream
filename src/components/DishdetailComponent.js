@@ -159,7 +159,7 @@ class CommentForm extends Component {
                         exitTransform: 'scale(0.5) translateY(-50%)'
                     }}>
                       <Card>
-                          <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
+                          <CardImg width="100%" src={"assets/images" + dish.image} alt={dish.name}/>
                           <CardBody>
                               <CardTitle>{dish.name}</CardTitle>
                               <CardText>{dish.description}</CardText>
@@ -174,7 +174,7 @@ class CommentForm extends Component {
         }
     }
 
-    const Dishdetail= (props) => {
+    const DishDetail= (props) => {
       if(props.isLoading){
         return(
           <div className="container">
@@ -224,4 +224,4 @@ class CommentForm extends Component {
     }
 
 
-export default Dishdetail;
+export default DishDetail;

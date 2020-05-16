@@ -79,8 +79,8 @@ class Header extends Component{
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
-                                <h1>Ristorante Con Fusion</h1>
-                                <p>We take inspiration from the World's best cuisines, and create a uniue fusion experience. Our lipsmaking creations will tickle your culinary senses!</p>
+                                <h1>Frozen Dream</h1>
+                                <p>Joy, sprinkled over ice , with love and cream.... don't settle for just one scoop, have a dive in it ! </p>
                             </div>
                         </div>
                     </div>

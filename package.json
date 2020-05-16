@@ -1,4 +1,5 @@
 {
+  "homepage": "http://samratdmid.github.io/react-deploy",
   "name": "confusion",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "bootstrap-social": "^5.1.1",
     "cross-fetch": "^2.1.0",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.2.0",
     "prop-types": "15.6.0",
     "react": "^16.13.1",
     "react-animation-components": "3.0.0",
@@ -27,6 +29,8 @@
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
