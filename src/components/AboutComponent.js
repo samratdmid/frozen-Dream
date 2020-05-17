@@ -17,7 +17,7 @@ function About(props) {
     return (
       <Media className="mt-5">
         <Media left className="mr-5">
-          <Media object src={"assets/images" + leader.image} alt={leader.name} />
+          <Media object src={require("./assets/images" + leader.image)} alt={leader.name} />
         </Media>
         <Media body>
           <Media heading>{leader.name}</Media>

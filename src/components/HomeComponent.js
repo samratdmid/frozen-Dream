@@ -25,7 +25,7 @@ function RenderCard({ item, isLoading, errMess }) {
         }}
         >
         <Card>
-          <CardImg src={"assets/images" + item.image} alt={item.name} />
+          <CardImg src={require("./assets/images" + item.image)} alt={item.name} />
           <CardBody>
             <CardTitle>{item.name}</CardTitle>
             {item.designation ? (
