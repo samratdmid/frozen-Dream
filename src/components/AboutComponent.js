@@ -61,7 +61,7 @@ function About(props) {
       </div>
       <div className="row row-content">
         <div className="col-12 col-md-6">
-          <h2>ICe Creams History</h2>
+          <h2>Ice Creams History</h2>
           <p>
           An ice-cream-like food was first eaten in China in 618-97AD. King Tang of Shang, had 94 ice men who helped to make a dish of buffalo milk, flour and camphor. A kind of ice-cream was invented in China about 200 BC when a milk and rice mixture was frozen by packing it into snow.
           </p>
