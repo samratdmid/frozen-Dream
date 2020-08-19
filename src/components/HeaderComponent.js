@@ -13,6 +13,8 @@ class Header extends Component{
         this.toggleNav =this.toggleNav.bind(this);
         this.toggleModal =this.toggleModal.bind(this);
         this.handleLogin =this.handleLogin.bind(this);
+        this.handleGoogleLogin = this.handleGoogleLogin.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     toggleNav(){
@@ -27,10 +29,20 @@ class Header extends Component{
         });
     }
 
-    handleLogin(event){
+    handleLogin(event) {
         this.toggleModal();
-        alert("Username: " +this.username.value +" Password: " +this.password.value +" Remember: "+this.remember.checked);
+        this.props.loginUser({username: this.username.value, password: this.password.value});
         event.preventDefault();
+
+    }
+    handleGoogleLogin(event) {
+        this.toggleModal();
+        this.props.googleLogin();
+        event.preventDefault();
+    }
+
+    handleLogout() {
+        this.props.logoutUser();
     }
 
     render(){
@@ -60,6 +72,11 @@ class Header extends Component{
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
+                                    <NavLink className="nav-link" to="/favorites">
+                                        <span className="fa fa-heart fa-lg"></span> My Favorites
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem>
                                     <NavLink className="nav-link" to="/contactus">
                                         <span className="fa fa-address-card fa-lg"></span> Contact Us
                                     </NavLink>
@@ -67,9 +84,27 @@ class Header extends Component{
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem>
-                                    <Button outline onClick={this.toggleModal}>
-                                        <span className="fa fa-sign-in fa-lg"></span> Login
-                                    </Button>
+                                    { !this.props.auth.isAuthenticated ?
+                                        <Button outline onClick={this.toggleModal}>
+                                            <span className="fa fa-sign-in fa-lg"></span> Login
+                                            {this.props.auth.isFetching ?
+                                                <span className="fa fa-spinner fa-pulse fa-fw"></span>
+                                                : null
+                                            }
+                                        </Button>
+                                        :
+                                        <div>
+                                        <div className="navbar-text mr-3">{this.props.auth.user.displayName}</div>
+                                        <Button outline onClick={this.handleLogout}>
+                                            <span className="fa fa-sign-out fa-lg"></span> Logout
+                                            {this.props.auth.isFetching ?
+                                                <span className="fa fa-spinner fa-pulse fa-fw"></span>
+                                                : null
+                                            }
+                                        </Button>
+                                        </div>
+                                    }
+
                                 </NavItem>
                             </Nav>
                         </Collapse>
@@ -90,23 +125,26 @@ class Header extends Component{
                     <ModalBody>
                         <Form onSubmit={this.handleLogin}>
                             <FormGroup>
-                                <Label htmlFor="username">Username</Label>
-                                <Input type="text" id="username" name="username" 
-                                    innerRef={(input) => this.username =input}/> 
+                                <Label htmlFor="username">Email</Label>
+                                <Input type="text" id="username" name="username"
+                                    innerRef={(input) => this.username = input} />
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
                                 <Input type="password" id="password" name="password"
-                                    innerRef={(input) => this.password =input} /> 
+                                    innerRef={(input) => this.password = input}  />
                             </FormGroup>
                             <FormGroup check>
                                 <Label check>
                                     <Input type="checkbox" name="remember"
-                                    innerRef={(input) => this.remember =input}/>Remember me
+                                    innerRef={(input) => this.remember = input}  />
+                                    Remember me
                                 </Label>
                             </FormGroup>
-                            <Button type="submit" value="submit" className="primary">Login</Button>
+                            <Button type="submit" value="submit" color="primary">Login</Button>
                         </Form>
+                        <p></p>
+                        <Button color="danger" onClick={this.handleGoogleLogin}><span className="fa fa-google fa-lg"></span> Login with Google</Button>
                     </ModalBody>
                 </Modal>
             </React.Fragment>
