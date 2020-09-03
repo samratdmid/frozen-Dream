@@ -13,7 +13,7 @@ function RenderDish({dish, favorite, postFavorite}) {
                   exitTransform: 'scale(0.5) translateY(-50%)'
               }}>
               <Card>
-                  <CardImg top src={dish.image} alt={dish.name} />
+                  <CardImg top src={require("./assets/images/" + dish.image)} alt={dish.name} />
                   <CardImgOverlay>
                       <Button outline color="primary" onClick={() => favorite ? console.log('Already favorite') : postFavorite(dish._id)}>
                           {favorite ?
